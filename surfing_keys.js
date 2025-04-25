@@ -35,6 +35,8 @@ api.unmap("c", /youtube.com|vk.com/);
 api.map("e", "f")
 api.unmap("f", /youtube.com/);
 api.unmap("t", /youtube.com/);
+api.unmap("f", /rutube.ru/);
+api.unmap("t", /rutube.ru/);
 api.unmap("1", /youtube.com/);
 api.unmap("m", /youtube.com/);
 // api.mapkey("e", '#1Open a link, press SHIFT to flip overlapped hints, hold SPACE to hide hints', function() {
