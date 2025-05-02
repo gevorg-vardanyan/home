@@ -33,6 +33,7 @@ api.unmap("[[", /youtube.com|vk.com/);
 api.unmap("]]", /youtube.com|vk.com/);
 api.unmap("c", /youtube.com|vk.com/);
 api.map("e", "f")
+api.map("gm", "gp")
 api.unmap("f", /youtube.com/);
 api.unmap("t", /youtube.com/);
 api.unmap("f", /rutube.ru/);
