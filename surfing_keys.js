@@ -48,6 +48,9 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     settings.digitForRepeat = false;
     api.map("e", "f")
     api.unmap("f")
+    api.mapkey('h', 'Open chapters(help of chapters)', function() {
+        $('#__youtube-chapters-in-player__button > button:nth-child(1)').click()
+    } );
 }
 
 settings.blocklist = {
