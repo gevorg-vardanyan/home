@@ -44,6 +44,18 @@ api.unmap("m", /youtube.com/);
 //     hints.create("", hints.dispatchMouseClick);
 // });
 
+mapkey('gp', '#4Go to the playing tab', function() {
+    RUNTIME('getTabs', { queryInfo: {audible: true}}, response => {
+        if (response.tabs?.at(0)) {
+            const tab = response.tabs[0]
+            RUNTIME('focusTab', {
+                windowId: tab.windowId,
+                tabId: tab.id
+            });
+        }
+    })
+}, { repeatIgnore: true });
+
 if (window.location.hostname === 'www.youtube.com' || window.location.hostname === 'www.youtu.be') {
     settings.digitForRepeat = false;
     api.map("e", "f")
