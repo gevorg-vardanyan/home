@@ -35,7 +35,6 @@ api.unmap("c", /youtube.com|vk.com/);
 api.map("e", "f")
 api.map("gm", "gp")
 api.unmap("f", /youtube.com/);
-api.unmap("t", /youtube.com/);
 api.unmap("f", /rutube.ru/);
 api.unmap("t", /rutube.ru/);
 api.unmap("1", /youtube.com/);
@@ -60,6 +59,9 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     settings.digitForRepeat = false;
     api.map("e", "f")
     api.unmap("f")
+    api.map("T", "t");
+    api.unmap("t");
+
     api.mapkey('h', 'Toggle YT chapters list(help of chapters)', function() {
         document.querySelector('#__youtube-chapters-in-player__button > button:nth-child(1)').click()
     } );
