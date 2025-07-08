@@ -72,6 +72,9 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
         // document.querySelector('button.ytp-button:nth-child(13)').click()
         document.getElementById('efyt-size').click()
     } );
+    api.mapkey('s', 'Take screenshot of YT video', function() {
+        document.getElementById('efyt-screenshot').click()
+    } );
 }
 
 settings.blocklist = {
