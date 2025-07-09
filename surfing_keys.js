@@ -72,8 +72,11 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
         // document.querySelector('button.ytp-button:nth-child(13)').click()
         document.getElementById('efyt-size').click()
     } );
-    api.mapkey('s', 'Take screenshot of YT video', function() {
+    api.mapkey('P', 'Take Page screenshot of YT video (Print screen)', function() {
         document.getElementById('efyt-screenshot').click()
+    } );
+    api.mapkey('s', 'Save YT video to playlist', function() {
+        document.querySelector('ytd-menu-service-item-renderer.style-scope:nth-child(3) > tp-yt-paper-item:nth-child(1)').click()
     } );
 }
 
