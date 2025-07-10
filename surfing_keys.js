@@ -76,7 +76,7 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
         document.getElementById('efyt-screenshot').click()
     } );
     api.mapkey('s', 'Save YT video to playlist', function() {
-        document.querySelector('ytd-menu-service-item-renderer.style-scope:nth-child(3) > tp-yt-paper-item:nth-child(1)').click()
+        document.querySelector('ytd-menu-service-item-renderer.style-scope:nth-child(3)').click()
     } );
 }
 
