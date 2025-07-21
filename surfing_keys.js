@@ -1,7 +1,3 @@
-// an example to create a new mapping `ctrl-y`
-api.mapkey('<ctrl-y>', 'Show me the money', function() {
-    Front.showPopup('a well-known phrase uttered by characters in the 1996 film Jerry Maguire (Escape to close).');
-});
 const {
     aceVimMap,
     mapkey,
@@ -25,6 +21,11 @@ const {
     RUNTIME
 } = api;
 
+// an example to create a new mapping `ctrl-y`
+api.mapkey('<ctrl-y>', 'Show me the money', function() {
+    Front.showPopup('a well-known phrase uttered by characters in the 1996 film Jerry Maguire (Escape to close).');
+});
+
 // api.unmapAllExcept(['j'], /youtube.com/);
 
 // settings.repeatThreshold = 2
@@ -39,6 +40,12 @@ api.unmap("f", /rutube.ru/);
 api.unmap("t", /rutube.ru/);
 api.unmap("1", /youtube.com/);
 api.unmap("m", /youtube.com/);
+api.unmap('<Ctrl-h>');
+api.unmap('P');
+api.unmap('U');
+api.unmap('S')
+api.unmap('D')
+
 // api.mapkey("e", '#1Open a link, press SHIFT to flip overlapped hints, hold SPACE to hide hints', function() {
 //     hints.create("", hints.dispatchMouseClick);
 // });
@@ -65,7 +72,10 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     api.mapkey('h', 'Toggle YT chapters list(help of chapters)', function() {
         document.querySelector('#__youtube-chapters-in-player__button > button:nth-child(1)').click()
     } );
-    api.mapkey('l', 'Toggle YT video loop', function() {
+    api.mapkey('l', 'Toggle YT video like', function() {
+        document.querySelector('like-button-view-model:nth-child(1) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)').click()
+    } );
+    api.mapkey('Alt-l', 'Toggle YT video loop', function() {
         document.querySelector('button.ytp-efyt-button:nth-child(1)').click()
     } );
     api.mapkey('E', 'Expand/shrink YT video view', function() {
@@ -98,14 +108,6 @@ settings.blocklist = {
 //     RUNTIME("down", {backward: true});
 // }, {repeatIgnore: false, domain: /youtube.com/i});
 
-
-api.unmap('<Ctrl-h>');
-api.unmap('P');
-api.unmap('U');
-// api.unmap('e');
-
-api.unmap('S')
-api.unmap('D')
 api.mapkey('H', '#4Go back in history', function() {
     history.go(-1);
 }, {repeatIgnore: true});
