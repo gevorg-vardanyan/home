@@ -76,7 +76,16 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
         document.getElementById('efyt-screenshot').click()
     } );
     api.mapkey('s', 'Save YT video to playlist', function() {
-        document.querySelector('ytd-menu-service-item-renderer.style-scope:nth-child(3)').click()
+        // click 'More options' to open the buttons list
+        document.querySelector('ytd-menu-renderer.ytd-watch-metadata > yt-button-shape:nth-child(4) > button:nth-child(1)').click();
+        // wait for the 'Save' button to appear and click it
+        const interval = setInterval(() => {
+            const item = document.querySelector('ytd-menu-service-item-renderer.style-scope:nth-child(3)');
+            if (item) {
+                item.click();
+                clearInterval(interval);
+            }
+        }, 100);
     } );
 }
 
