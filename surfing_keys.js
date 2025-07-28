@@ -75,6 +75,9 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     api.mapkey('l', 'Toggle YT video like', function() {
         document.querySelector('like-button-view-model:nth-child(1) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)').click()
     } );
+    api.mapkey('D', 'Toggle YT video dislike', function() {
+        document.querySelector('dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)').click()
+    } );
     api.mapkey('<Alt-l>', 'Toggle YT video loop', function() {
         document.querySelector('button.ytp-efyt-button:nth-child(1)').click()
     } );
