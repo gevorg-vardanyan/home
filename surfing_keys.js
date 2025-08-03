@@ -30,16 +30,16 @@ api.mapkey('<ctrl-y>', 'Show me the money', function() {
 
 // settings.repeatThreshold = 2
 
-api.unmap("[[", /youtube.com|vk.com/);
-api.unmap("]]", /youtube.com|vk.com/);
+api.unmap("[[", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
+api.unmap("]]", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
 api.unmap("c", /youtube.com|vk.com/);
 api.map("e", "f")
 api.map("gm", "gp")
-api.unmap("f", /youtube.com/);
-api.unmap("f", /rutube.ru/);
+api.unmap("f", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
+// api.unmap("f", /rutube.ru/);
 api.unmap("t", /rutube.ru/);
 api.unmap("1", /youtube.com/);
-api.unmap("m", /youtube.com/);
+api.unmap("m", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
 api.unmap('<Ctrl-h>');
 api.unmap('P');
 api.unmap('U');
@@ -140,8 +140,6 @@ api.mapkey('S', 'Open omnibar', function() {
 // api.mapkey('J', '#3Go one tab left', 'RUNTIME("previousTab")');
 // api.mapkey('K', '#3Go one tab right', 'RUNTIME("nextTab")');
 
-
-
 // --- VK mapping
 api.mapkey('p', 'Repeat audio', function() {
     if (window.location.hostname === "vk.com") {
@@ -162,8 +160,6 @@ api.mapkey('aa', 'Add audiotrack to list', function() {
         }
     }
 });
-
-
 
 // set theme
 settings.theme = `
