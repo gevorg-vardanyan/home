@@ -66,8 +66,8 @@ if (window.location.hostname.includes("kino")) {
     api.map("e", "f")
     api.unmap("f")
     console.log("=============\nin kino website")
-    api.mapkey('h', 'Test', function() {
-        console.log("=============\nin kino website")
+    api.mapkey('f', 'Test', function() {
+        document.dispatchEvent(new KeyboardEvent("keydown", { key: "f" }));
     } );
 }
 
