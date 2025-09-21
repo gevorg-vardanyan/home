@@ -64,8 +64,8 @@ mapkey('gp', '#4Go to the playing tab', function() {
 
 if (window.location.hostname.includes("kino")) {
     console.log("==============\nhostname:", window.location.hostname)
-    api.map("e", "f")
-    api.unmap("f")
+    api.map("e", "f");
+    api.unmap("f", '/' + window.location.hostname + '/');
 }
 
 if (window.location.hostname === 'www.youtube.com' || window.location.hostname === 'www.youtu.be') {
