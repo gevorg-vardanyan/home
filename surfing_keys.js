@@ -65,7 +65,7 @@ mapkey('gp', '#4Go to the playing tab', function() {
 if (window.location.hostname.includes("kino")) {
     console.log("==============\nhostname:", window.location.hostname)
     api.map("e", "f");
-    api.unmap("t", /kinogo.media/);
+    api.unmap("f", /kinogo.media/);
     // api.unmap("f", '/' + window.location.hostname + '/');
 }
 
