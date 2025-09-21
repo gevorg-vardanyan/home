@@ -62,6 +62,11 @@ mapkey('gp', '#4Go to the playing tab', function() {
     })
 }, { repeatIgnore: true });
 
+if (window.location.hostname.includes("kino")) {
+    api.map("e", "f")
+    api.unmap("f")
+}
+
 if (window.location.hostname === 'www.youtube.com' || window.location.hostname === 'www.youtu.be') {
     settings.digitForRepeat = false;
     api.map("e", "f")
