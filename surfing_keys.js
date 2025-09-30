@@ -97,8 +97,8 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     } );
     api.mapkey('s', 'Save YT video to playlist', function() {
         // click 'More options' to open the buttons list
-        document.querySelector('ytd-menu-renderer.ytd-watch-metadata tp-yt-paper-icon-button')?.click();
-    
+        document.querySelector('ytd-menu-renderer.ytd-watch-metadata > yt-button-shape:nth-child(4) > button:nth-child(1)').click();    
+
         // wait until menu items render, then look for the one with "Save" text
         const interval = setInterval(() => {
             const items = document.querySelectorAll('ytd-menu-service-item-renderer');
