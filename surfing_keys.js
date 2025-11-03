@@ -120,6 +120,46 @@ settings.blocklist = {
     "https://mail.zealous.tech": 1
 },
 
+if (window.location.hostname === 'app.dupdub.com') {
+    api.mapkey('e', 'Export DupDub current TTS as mp3', function() {
+        function waitForElement(selectorOrFn, timeout = 5000) {
+          return new Promise((resolve, reject) => {
+            const start = Date.now();
+            
+            const check = () => {
+              const el = typeof selectorOrFn === "function" ? selectorOrFn() : document.querySelector(selectorOrFn);
+              
+              if (el) return resolve(el);
+              if (Date.now() - start >= timeout) return reject("Timeout waiting for element");
+        
+              requestAnimationFrame(check);
+            };
+        
+            check();
+          });
+        }
+        async function exportMp3Sequence() {
+          // Click export dropdown button
+          const exportMenuBtn = await waitForElement('.export-span.el-popover__reference');
+          exportMenuBtn.click();
+        
+          // Click MP3 option
+          const mp3Btn = await waitForElement(() =>
+            Array.from(document.querySelectorAll('.option-item-title'))
+              .find(el => el.textContent.trim() === 'MP3')
+          );
+          mp3Btn.click();
+        
+          // Click Export in second menu
+          const exportBtn = await waitForElement(() =>
+            Array.from(document.querySelector('.export-container').querySelectorAll('span'))
+              .find(el => el.textContent.trim() === 'Export')
+          );
+          exportBtn.click();
+        }
+        exportMp3Sequence().catch(console.error);
+    } );
+}
 
 // api.mapkey('j', '#4Move down', function() {
 //     RUNTIME("down", {backward: true});
