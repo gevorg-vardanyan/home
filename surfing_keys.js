@@ -143,7 +143,6 @@ api.mapkey('S', 'Open omnibar', function() {
 // }, {repeatIgnore: true});
 
 if (window.location.hostname === 'app.dupdub.com') {
-    console.info('----------DUPDUB configs-----------')
     api.mapkey('e', 'Export DupDub current TTS as mp3', function() {
         function waitForElement(selectorOrFn, timeout = 5000) {
           return new Promise((resolve, reject) => {
@@ -162,7 +161,6 @@ if (window.location.hostname === 'app.dupdub.com') {
           // Click export dropdown button
           const exportMenuBtn = await waitForElement('.export-span.el-popover__reference');
           exportMenuBtn.click();
-            console.info('click on exportbtn')
         
           // Click MP3 option
           const mp3Btn = await waitForElement(() =>
@@ -170,7 +168,6 @@ if (window.location.hostname === 'app.dupdub.com') {
               .find(el => el.textContent.trim() === 'MP3')
           );
           mp3Btn.click();
-            console.info('click on mp3')
         
           // Click Export in second menu
           const exportBtn = await waitForElement(() =>
@@ -178,9 +175,8 @@ if (window.location.hostname === 'app.dupdub.com') {
               .find(el => el.textContent.trim() === 'Export')
           );
           exportBtn.click();
-            console.info('click on export btn')
         }
-        console.info('----start to export-----')
+
         exportMp3Sequence().catch(console.error);
     } );
 }
