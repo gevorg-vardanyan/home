@@ -119,6 +119,28 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
 settings.blocklist = {
     "https://mail.zealous.tech": 1
 },
+// api.mapkey('j', '#4Move down', function() {
+//     RUNTIME("down", {backward: true});
+// }, {repeatIgnore: false, domain: /youtube.com/i});
+api.mapkey('H', '#4Go back in history', function() {
+    history.go(-1);
+}, {repeatIgnore: true});
+api.mapkey('L', '#4Go forward in history', function() {
+    history.go(1);
+}, {repeatIgnore: true});
+api.mapkey('J', '#4Go one tab left', function() {
+    RUNTIME("previousTab");
+}, {repeatIgnore: true});
+api.mapkey('K', '#4Go one tab right', function() {
+    RUNTIME("nextTab");
+}, {repeatIgnore: true});
+
+api.mapkey('S', 'Open omnibar', function() {
+    Front.openOmnibar({type: "TabURLs"});
+} );
+// api.mapkey("e", '#1Open a link, press SHIFT to flip overlapped hints, hold SPACE to hide hints', function() {
+//     hints.create("", hints.dispatchMouseClick);
+// }, {repeatIgnore: true});
 
 if (window.location.hostname === 'app.dupdub.com') {
     console.info('----------DUPDUB configs-----------')
@@ -163,29 +185,6 @@ if (window.location.hostname === 'app.dupdub.com') {
     } );
 }
 
-// api.mapkey('j', '#4Move down', function() {
-//     RUNTIME("down", {backward: true});
-// }, {repeatIgnore: false, domain: /youtube.com/i});
-
-api.mapkey('H', '#4Go back in history', function() {
-    history.go(-1);
-}, {repeatIgnore: true});
-api.mapkey('L', '#4Go forward in history', function() {
-    history.go(1);
-}, {repeatIgnore: true});
-api.mapkey('J', '#4Go one tab left', function() {
-    RUNTIME("previousTab");
-}, {repeatIgnore: true});
-api.mapkey('K', '#4Go one tab right', function() {
-    RUNTIME("nextTab");
-}, {repeatIgnore: true});
-
-api.mapkey('S', 'Open omnibar', function() {
-    Front.openOmnibar({type: "TabURLs"});
-} );
-// api.mapkey("e", '#1Open a link, press SHIFT to flip overlapped hints, hold SPACE to hide hints', function() {
-//     hints.create("", hints.dispatchMouseClick);
-// }, {repeatIgnore: true});
 
 // only keep E, R and T from Surfingkeys for gmail.com and twitter.com
 // api.unmapAllExcept(['E','R','T'], /gmail.com|twitter.com/);
