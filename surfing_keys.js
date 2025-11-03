@@ -175,10 +175,11 @@ if (window.location.hostname === 'app.dupdub.com') {
 }
 
 if (window.location.hostname.includes("kino")) {
-    console.log("==============\nhostname:", window.location.hostname)
-    // api.map("e", "f");
-    api.unmap("f");
-    // api.unmap("f", '/' + window.location.hostname + '/');
+    settings.digitForRepeat = false;
+    api.map("e", "f")
+    api.unmap("f")
+    api.map("T", "t");
+    api.unmap("t");
 }
 
 // only keep E, R and T from Surfingkeys for gmail.com and twitter.com
