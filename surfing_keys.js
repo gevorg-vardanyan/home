@@ -35,11 +35,11 @@ api.unmap("]]", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
 api.unmap("c", /youtube.com|vk.com/);
 api.map("e", "f")
 api.map("gm", "gp")
-api.unmap("f", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
+api.unmap("f", /youtube.com|vk.com|vkvideo.ru|rutube.ru|kinogo.media/);
 // api.unmap("f", /rutube.ru/);
 api.unmap("t", /rutube.ru/);
 api.unmap("1", /youtube.com/);
-api.unmap("m", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
+api.unmap("m", /youtube.com|vk.com|vkvideo.ru|rutube.ru|kinogo.media/);
 api.unmap('<Ctrl-h>');
 api.unmap('P');
 api.unmap('U');
@@ -174,13 +174,13 @@ if (window.location.hostname === 'app.dupdub.com') {
     } );
 }
 
-if (window.location.hostname.includes("kino")) {
-    settings.digitForRepeat = false;
-    api.map("e", "f")
-    api.unmap("f")
-    api.map("T", "t");
-    api.unmap("t");
-}
+// if (window.location.hostname.includes("kino")) {
+//     settings.digitForRepeat = false;
+//     api.map("e", "f")
+//     api.unmap("f")
+//     api.map("T", "t");
+//     api.unmap("t");
+// }
 
 // only keep E, R and T from Surfingkeys for gmail.com and twitter.com
 // api.unmapAllExcept(['E','R','T'], /gmail.com|twitter.com/);
