@@ -160,11 +160,17 @@ async function selectOptionByText(optionText) {
 if (window.location.hostname === 'app.dupdub.com') {
     api.mapkey('s', 'Select voiceover for DupDub TTS', function() {
         async function setTTSvoiceover() {
+            // open voiceovers list
             Array.from(document.querySelectorAll('span'))
                 .find(el => el.textContent.trim() === 'More voiceovers').click()
-            document.getElementsByClassName('category-item-wrapper')[0].querySelector('.stext').click()
+            // set language
+            const options = await waitForElement(() => 
+                document.getElementsByClassName('category-item-wrapper')
+            );
+            options[0].querySelector('.stext').click()
             setTimeout(selectOptionByText('Russian'), 300)
-            document.getElementsByClassName('category-item-wrapper')[1].querySelector('.stext').click()
+            // set gender
+            options[1].querySelector('.stext').click()
             setTimeout(selectOptionByText('Male'), 300)
         }
 
