@@ -135,21 +135,43 @@ api.mapkey('S', 'Open omnibar', function() {
 //     hints.create("", hints.dispatchMouseClick);
 // }, {repeatIgnore: true});
 
+function waitForElement(selectorOrFn, timeout = 10000) {
+  return new Promise((resolve, reject) => {
+    const start = Date.now();
+    const check = () => {
+      const el = typeof selectorOrFn === "function" ? selectorOrFn() : document.querySelector(selectorOrFn);
+      if (el) return resolve(el);
+      if (Date.now() - start >= timeout) return reject("Timeout waiting for element");
+      requestAnimationFrame(check);
+    };
+    check();
+  });
+}
+
+async function selectOptionByText(optionText) {
+  // Find dropdown options container
+  const option = await waitForElement(() => 
+    Array.from(document.querySelectorAll('.option'))
+      .find(opt => opt.textContent.trim() === optionText)
+  );
+  option?.click();
+}
+
 if (window.location.hostname === 'app.dupdub.com') {
-    api.mapkey('e', 'Export DupDub current TTS as mp3', function() {
-        function waitForElement(selectorOrFn, timeout = 5000) {
-          return new Promise((resolve, reject) => {
-            const start = Date.now();
-            const check = () => {
-              const el = typeof selectorOrFn === "function" ? selectorOrFn() : document.querySelector(selectorOrFn);
-              if (el) return resolve(el);
-              if (Date.now() - start >= timeout) return reject("Timeout waiting for element");
-              requestAnimationFrame(check);
-            };
-            check();
-          });
+    api.mapkey('s', 'Select voiceover for DupDub TTS', function() {
+        async function setTTSvoiceover() {
+            Array.from(document.querySelectorAll('span'))
+                .find(el => el.textContent.trim() === 'More voiceovers').click()
+            document.getElementsByClassName('category-item-wrapper')[0].querySelector('.stext').click()
+            setTimeout(selectOptionByText('Russian'), 300)
+            document.getElementsByClassName('category-item-wrapper')[1].querySelector('.stext').click()
+            setTimeout(selectOptionByText('Male'), 300)
         }
 
+        setTTSvoiceover().catch(console.error);
+    } );
+
+    api.mapkey('e', 'Export DupDub current TTS as mp3', function() {
         async function exportMp3Sequence() {
           // Click export dropdown button
           const exportMenuBtn = await waitForElement('.export-span.el-popover__reference');
