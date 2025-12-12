@@ -179,18 +179,18 @@ if (window.location.hostname === 'app.dupdub.com') {
 
     api.mapkey('e', 'Export DupDub current TTS as mp3', function() {
         async function exportMp3Sequence() {
-          // Click export dropdown button
+          // click export dropdown button
           const exportMenuBtn = await waitForElement('.export-span.el-popover__reference');
           exportMenuBtn.click();
         
-          // Click MP3 option
+          // click MP3 option
           const mp3Btn = await waitForElement(() =>
             Array.from(document.querySelectorAll('.option-item-title'))
               .find(el => el.textContent.trim() === 'MP3')
           );
           mp3Btn.click();
         
-          // Click Export in second menu
+          // click Export in second menu
           const exportBtn = await waitForElement(() =>
             Array.from(document.querySelector('.export-container').querySelectorAll('span'))
               .find(el => el.textContent.trim() === 'Export')
@@ -199,6 +199,37 @@ if (window.location.hostname === 'app.dupdub.com') {
         }
 
         exportMp3Sequence().catch(console.error);
+    } );
+
+    api.mapkey('l', 'Logout from DupDub account', function() {
+        async function logout() {
+            // need to hover over the profile icon which will create 'Logout' div in dom
+            const userInfoWrapper = document.querySelector('.user-info-wrapper');
+            
+            // create a mouseenter event
+            const mouseEnterEvent = new MouseEvent('mouseenter', {
+              bubbles: true,
+              cancelable: true,
+              view: window
+            });
+            
+            // create a mouseleave event (if you need to simulate hover out as well)
+            const mouseLeaveEvent = new MouseEvent('mouseleave', {
+              bubbles: true,
+              cancelable: true,
+              view: window
+            });
+            
+            // simulate the mouseenter event
+            userInfoWrapper.dispatchEvent(mouseEnterEvent);
+            // simulate the mouseleave event (if needed after some delay)
+            setTimeout(() => {
+                document.querySelector('.gtm-editor-logout').click()
+                userInfoWrapper.dispatchEvent(mouseLeaveEvent);
+            }, 1000);
+        }
+
+        logout().catch(console.error);
     } );
 }
 
