@@ -158,6 +158,48 @@ async function selectOptionByText(optionText) {
 }
 
 if (window.location.hostname === 'app.dupdub.com') {
+    api.mapkey('w', 'pass through Welcome screen', function() {
+        async function passWelcomeScreen() {
+            // select 'describes you' option
+            Array.from(document.querySelectorAll('p'))
+                .find(el => el.textContent.trim() === 'Teacher / Trainer').click()
+            // click on 'Continue' button
+            Array.from(document.querySelectorAll('span'))
+                .find(el => el.textContent.trim() === 'Continue').click()
+
+            // select 'type of business' option
+            let option = await waitForElement(el => 
+              Array.from(document.querySelectorAll('p'))
+                .find(p => p.textContent.trim() === 'Education'), 
+              2000
+            );
+            option.click();
+            // click on 'Continue' button
+            Array.from(document.querySelectorAll('span'))
+                .find(el => el.textContent.trim() === 'Continue').click()
+
+            // select 'kind of content' option
+            option = await waitForElement(el => 
+              Array.from(document.querySelectorAll('p'))
+                .find(p => p.textContent.trim() === 'Audiobook'), 
+              2000
+            );
+            option.click();
+            // click on 'Continue' button
+            Array.from(document.querySelectorAll('span'))
+                .find(el => el.textContent.trim() === 'Submit').click()
+
+            // close dialogue
+            let closeDialogue = await waitForElement(el => 
+              document.getElementsByClassName('close-icon')[0], 
+              3000
+            );
+            closeDialogue.click();
+        }
+
+        passWelcomeScreen().catch(console.error);
+    } );
+
     api.mapkey('s', 'Select voiceover for DupDub TTS', function() {
         async function setTTSvoiceover() {
             // open voiceovers list
