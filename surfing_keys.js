@@ -265,10 +265,12 @@ if (window.location.hostname === 'app.dupdub.com') {
             // simulate the mouseenter event
             userInfoWrapper.dispatchEvent(mouseEnterEvent);
             // simulate the mouseleave event (if needed after some delay)
-            setTimeout(() => {
-                document.querySelector('.gtm-editor-logout').click()
-                userInfoWrapper.dispatchEvent(mouseLeaveEvent);
-            }, 1000);
+            let logoutButton = await waitForElement(el => 
+              document.querySelector('.gtm-editor-logout'), 
+              1000
+            );
+            logoutButton.click();
+            userInfoWrapper.dispatchEvent(mouseLeaveEvent);
         }
 
         logout().catch(console.error);
