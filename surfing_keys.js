@@ -41,6 +41,7 @@ api.unmap("t", /rutube.ru/);
 api.unmap("1", /youtube.com/);
 api.unmap("m", /youtube.com|vk.com|vkvideo.ru|rutube.ru|kinogo.media/);
 api.unmap('<Ctrl-h>');
+api.unmap('<Ctrl-a>');
 api.unmap('P');
 api.unmap('U');
 api.unmap('S')
