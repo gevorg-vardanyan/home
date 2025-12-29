@@ -67,6 +67,7 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     settings.digitForRepeat = false;
     api.map("e", "f")
     api.unmap("f")
+    api.unmap("v")
     api.map("T", "t");
     api.unmap("t");
 
