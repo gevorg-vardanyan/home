@@ -230,7 +230,7 @@ if (window.location.hostname === 'app.dupdub.com') {
           // click MP3 option
           const mp3Btn = await waitForElement(() =>
             Array.from(document.querySelectorAll('.option-item-title'))
-              .find(el => el.textContent.trim() === 'MP3')
+              .find(el => el.textContent.trim() === 'WAV')
           );
           mp3Btn.click();
         
@@ -243,6 +243,15 @@ if (window.location.hostname === 'app.dupdub.com') {
         }
 
         exportMp3Sequence().catch(console.error);
+    } );
+
+    api.mapkey('<Ctrl-g>', 'Generate voiceover in DupDub', function() {
+        async function generateVoiceover() {
+          // click export dropdown button
+          const generateBtn = document.querySelector('.play-icon');
+          generateBtn.click();
+        }
+        generateVoiceover().catch(console.error);
     } );
 
     api.mapkey('l', 'Logout from DupDub account', function() {
