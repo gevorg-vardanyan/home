@@ -111,6 +111,36 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     } );
 }
 
+if (window.location.href.includes('youtube.com/shorts/') {
+    settings.digitForRepeat = false;
+    api.map("e", "f")
+    api.unmap("f")
+    api.unmap("v")
+    api.map("T", "t");
+    api.unmap("t");
+    api.mapkey('s', 'Save YT short to playlist', function() {
+        // hover over the video and click dots to open the buttons list
+        let vid = document.querySelector('.html5-video-container')
+        vid.dispatchEvent(new MouseEvent('mouseenter', {
+          bubbles: true,
+          cancelable: true,
+          view: window
+        }));        
+        
+        let dots = document.querySelector('#button-shape > button:nth-child(1) > yt-touch-feedback-shape:nth-child(2) > div:nth-child(2)')
+        dots.click()
+
+        // wait until menu items render, then look for the one with "Save" text
+        const interval = setInterval(() => {
+            const save_to = target = [...document.querySelectorAll('span')].find(el => el.textContent.toLowerCase().includes('save to playlist'));
+            if (!save_to === undefined) return;
+            save_to.click();
+            clearInterval(interval);
+            return;
+        }, 200);
+    } );
+}
+
 settings.blocklist = {
     "https://mail.zealous.tech": 1
 },
