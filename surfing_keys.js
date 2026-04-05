@@ -111,7 +111,7 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     } );
 }
 
-if (window.location.href.includes('youtube.com/shorts/') {
+if (window.location.href.includes('youtube.com/shorts/')) {
     settings.digitForRepeat = false;
     api.map("e", "f")
     api.unmap("f")
