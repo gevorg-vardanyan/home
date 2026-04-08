@@ -118,6 +118,7 @@ if (window.location.href.includes('youtube.com/shorts/')) {
     api.unmap("v")
     api.map("T", "t");
     api.unmap("t");
+
     api.mapkey('s', 'Save YT short to playlist', function() {
         // hover over the video and click dots to open the buttons list
         let vid = document.querySelector('.html5-video-container')
@@ -138,6 +139,18 @@ if (window.location.href.includes('youtube.com/shorts/')) {
             clearInterval(interval);
             return;
         }, 200);
+    } );
+
+    api.mapkey('l', 'Like YT short', function() {
+        let like_view = document.getElementsByClassName('ytLikeButtonViewModelHost')[0]
+        let like_button = like_view.getElementsByClassName('ytSpecTouchFeedbackShapeFill')[0]
+        like_button.click()
+    } );
+
+    api.mapkey('l', 'Dislike YT short', function() {
+        let dislike_view = document.getElementsByClassName('ytDislikeButtonViewModelHost')[0]
+        let dislike_button = dislike_view.getElementsByClassName('ytSpecTouchFeedbackShapeFill')[0]
+        dislike_button.click()
     } );
 }
 
