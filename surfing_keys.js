@@ -147,7 +147,7 @@ if (window.location.href.includes('youtube.com/shorts/')) {
         like_button.click()
     } );
 
-    api.mapkey('l', 'Dislike YT short', function() {
+    api.mapkey('D', 'Dislike YT short', function() {
         let dislike_view = document.getElementsByClassName('ytDislikeButtonViewModelHost')[0]
         let dislike_button = dislike_view.getElementsByClassName('ytSpecTouchFeedbackShapeFill')[0]
         dislike_button.click()
