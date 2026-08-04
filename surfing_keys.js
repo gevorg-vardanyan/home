@@ -92,6 +92,9 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     api.mapkey('P', 'Take Page screenshot of YT video (Print screen)', function() {
         document.getElementById('efyt-screenshot').click()
     } );
+    api.mapkey('C', 'Toggle coema-mode of YT video', function() {
+        document.getElementById('efyt-cinema-mode').click()
+    } );
     api.mapkey('s', 'Save YT video to playlist', function() {
         // click 'More options' to open the buttons list
         document.querySelector('ytd-menu-renderer.ytd-watch-metadata > yt-button-shape:nth-child(4) > button:nth-child(1)').click();    
