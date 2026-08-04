@@ -127,10 +127,8 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
             'dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)'
         )
         if (!disButton) return;
-    
         clearInterval(interval);
-        console.log('\n\n\nmanage bar', mBar)
-        console.log('\ndislike button', disButton)
+
         if (disButton) {
           const applyDislikeStyle = () => {
             const pressed = disButton.getAttribute('aria-pressed') === 'true';
