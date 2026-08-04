@@ -78,7 +78,9 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
         document.querySelector('like-button-view-model:nth-child(1) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)').click()
     } );
     api.mapkey('D', 'Toggle YT video dislike', function() {
-        document.querySelector('dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)').click()
+        let manageBar = document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div:nth-child(1)')
+        let dislikeButton = main.querySelector('dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)')
+        dislikeButton.click()
     } );
     api.mapkey('<Alt-l>', 'Toggle YT video loop', function() {
         document.querySelector('button.ytp-efyt-button:nth-child(1)').click()
