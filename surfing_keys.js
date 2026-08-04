@@ -115,35 +115,47 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
         }, 200);
     } );
 
-    // listen and apply colors of 'dislike' button
-    let manageBar = document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div:nth-child(1)')
-    let dislikeButton = manageBar.querySelector('dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)')
-    console.log('\nmanage bar', manageBar)
-    console.log('\ndislike button', dislikeButton)
-    if (dislikeButton) {
-      const applyDislikeStyle = () => {
-        const pressed = dislikeButton.getAttribute('aria-pressed') === 'true';
+    // wait until menu render
+    const interval = setInterval(() => {
+        // listen and apply colors of 'dislike' button
+        let mBar = document.querySelector(
+            'ytd-menu-renderer.ytd-watch-metadata > div:nth-child(1)'
+        )
+        if (!mBar) return;
     
-        if (pressed) {
-          dislikeButton.style.borderColor = 'red';
-          dislikeButton.style.borderStyle = 'groove';
-        } else {
-          dislikeButton.style.borderColor = '';
-          dislikeButton.style.borderStyle = '';
+        let disButton = mBar.querySelector(
+            'dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)'
+        )
+        if (!disButton) return;
+    
+        clearInterval(interval);
+        console.log('\n\n\nmanage bar', mBar)
+        console.log('\ndislike button', disButton)
+        if (disButton) {
+          const applyDislikeStyle = () => {
+            const pressed = disButton.getAttribute('aria-pressed') === 'true';
+        
+            if (pressed) {
+              disButton.style.borderColor = 'red';
+              disButton.style.borderStyle = 'groove';
+            } else {
+              disButton.style.borderColor = '';
+              disButton.style.borderStyle = '';
+            }
+          };
+        
+          // initial state
+          applyDislikeStyle();
+        
+          // watch for changes
+          const dislikeObserver = new MutationObserver(applyDislikeStyle);
+        
+          dislikeObserver.observe(disButton, {
+            attributes: true,
+            attributeFilter: ['aria-pressed']
+          });
         }
-      };
-    
-      // initial state
-      applyDislikeStyle();
-    
-      // watch for changes
-      const dislikeObserver = new MutationObserver(applyDislikeStyle);
-    
-      dislikeObserver.observe(dislikeButton, {
-        attributes: true,
-        attributeFilter: ['aria-pressed']
-      });
-    }
+    }, 300);
 
 }
 
