@@ -114,6 +114,35 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
             }
         }, 200);
     } );
+
+    // listen and apply colors of 'dislike' button
+    let manageBar = document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div:nth-child(1)')
+    let dislikeButton = manageBar.querySelector('dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)')
+    if (dislikeButton) {
+      const applyStyle = () => {
+        const pressed = dislikeButton.getAttribute('aria-pressed') === 'true';
+    
+        if (pressed) {
+          dislikeButton.style.borderColor = 'red';
+          dislikeButton.style.borderStyle = 'groove';
+        } else {
+          dislikeButton.style.borderColor = '';
+          dislikeButton.style.borderStyle = '';
+        }
+      };
+    
+      // initial state
+      applyStyle();
+    
+      // watch for changes
+      const observer = new MutationObserver(applyStyle);
+    
+      observer.observe(dislikeButton, {
+        attributes: true,
+        attributeFilter: ['aria-pressed']
+      });
+    }
+
 }
 
 if (window.location.href.includes('youtube.com/shorts/')) {
