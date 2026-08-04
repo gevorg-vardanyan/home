@@ -118,8 +118,10 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     // listen and apply colors of 'dislike' button
     let manageBar = document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div:nth-child(1)')
     let dislikeButton = manageBar.querySelector('dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)')
+    console.log('\nmanage bar', manageBar)
+    console.log('\ndislike button', dislikeButton)
     if (dislikeButton) {
-      const applyStyle = () => {
+      const applyDislikeStyle = () => {
         const pressed = dislikeButton.getAttribute('aria-pressed') === 'true';
     
         if (pressed) {
@@ -132,12 +134,12 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
       };
     
       // initial state
-      applyStyle();
+      applyDislikeStyle();
     
       // watch for changes
-      const observer = new MutationObserver(applyStyle);
+      const dislikeObserver = new MutationObserver(applyDislikeStyle);
     
-      observer.observe(dislikeButton, {
+      dislikeObserver.observe(dislikeButton, {
         attributes: true,
         attributeFilter: ['aria-pressed']
       });
