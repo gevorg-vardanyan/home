@@ -33,6 +33,7 @@ api.mapkey('<ctrl-y>', 'Show me the money', function() {
 api.unmap("[[", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
 api.unmap("]]", /youtube.com|vk.com|vkvideo.ru|rutube.ru/);
 api.unmap("c", /youtube.com|vk.com/);
+api.unmap("E", /github.com);
 api.map("e", "f")
 api.map("gm", "gp")
 api.unmap("f", /youtube.com|vk.com|vkvideo.ru|rutube.ru|kinogo.media/);
@@ -247,6 +248,10 @@ async function selectOptionByText(optionText) {
   );
   option?.click();
 }
+
+// if (window.location.hostname === 'github.com') {
+// }
+
 
 if (window.location.hostname === 'app.dupdub.com') {
     api.mapkey('w', 'pass through Welcome screen', function() {
