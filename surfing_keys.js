@@ -249,8 +249,12 @@ async function selectOptionByText(optionText) {
   option?.click();
 }
 
-// if (window.location.hostname === 'github.com') {
-// }
+if (window.location.hostname === 'github.com') {
+    api.mapkey('<C-c>', 'Commit changes', function() {
+        let commit = [...document.querySelectorAll('span')].find(el => el.textContent.trim().startsWith('Commit changes...'));
+        commit.click()
+    } );
+}
 
 
 if (window.location.hostname === 'app.dupdub.com') {
