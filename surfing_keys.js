@@ -250,7 +250,7 @@ async function selectOptionByText(optionText) {
 }
 
 if (window.location.hostname === 'github.com') {
-    api.mapkey('<C-c>', 'Commit changes', function() {
+    api.mapkey('<Ctrl-c>', 'Commit changes', function() {
         let commit = [...document.querySelectorAll('span')].find(el => el.textContent.trim().startsWith('Commit changes...'));
         commit.click()
     } );
