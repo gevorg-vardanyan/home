@@ -72,31 +72,31 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     api.map("T", "t");
     api.unmap("t");
 
-    api.mapkey('h', 'Toggle YT chapters list(help of chapters)', function() {
+    api.mapkey('h', 'YT. toggle chapters list(help of chapters)', function() {
         document.querySelector('#__youtube-chapters-in-player__button > button:nth-child(1)').click()
     } );
-    api.mapkey('l', 'Toggle YT video like', function() {
+    api.mapkey('l', 'YT. toggle like', function() {
         document.querySelector('like-button-view-model:nth-child(1) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)').click()
     } );
-    api.mapkey('D', 'Toggle YT video dislike', function() {
+    api.mapkey('D', 'YT. toggle dislike', function() {
         let manageBar = document.querySelector('ytd-menu-renderer.ytd-watch-metadata > div:nth-child(1)')
         let dislikeButton = manageBar.querySelector('dislike-button-view-model:nth-child(2) > toggle-button-view-model:nth-child(1) > button-view-model:nth-child(1) > button:nth-child(1)')
         dislikeButton.click()
     } );
-    api.mapkey('<Alt-l>', 'Toggle YT video loop', function() {
+    api.mapkey('<Alt-l>', 'YT. toggle loop', function() {
         document.querySelector('button.ytp-efyt-button:nth-child(1)').click()
     } );
-    api.mapkey('E', 'Expand/shrink YT video view', function() {
+    api.mapkey('E', 'YT. toggle expand/shrink video view', function() {
         // document.querySelector('button.ytp-button:nth-child(13)').click()
         document.getElementById('efyt-size').click()
     } );
-    api.mapkey('P', 'Take Page screenshot of YT video (Print screen)', function() {
+    api.mapkey('P', 'YT. take Page screenshot of video (Print screen)', function() {
         document.getElementById('efyt-screenshot').click()
     } );
-    api.mapkey('C', 'Toggle coema-mode of YT video', function() {
+    api.mapkey('C', 'YT. toggle cinema-mode', function() {
         document.getElementById('efyt-cinema-mode').click()
     } );
-    api.mapkey('s', 'Save YT video to playlist', function() {
+    api.mapkey('s', 'YT. save to playlist', function() {
         let saveButton = document.querySelector('button[aria-label="Save to playlist"]');
         saveButton.click();
     } );
@@ -151,7 +151,7 @@ if (window.location.href.includes('youtube.com/shorts/')) {
     api.map("T", "t");
     api.unmap("t");
 
-    api.mapkey('s', 'Save YT short to playlist', function() {
+    api.mapkey('s', 'YT. save short to playlist', function() {
         // hover over the video and click dots to open the buttons list
         let vid = document.querySelector('.html5-video-container')
         vid.dispatchEvent(new MouseEvent('mouseenter', {
@@ -173,13 +173,13 @@ if (window.location.href.includes('youtube.com/shorts/')) {
         }, 200);
     } );
 
-    api.mapkey('l', 'Like YT short', function() {
+    api.mapkey('l', 'YT. toggle like short', function() {
         let like_view = document.getElementsByClassName('ytLikeButtonViewModelHost')[0]
         let like_button = like_view.getElementsByClassName('ytSpecTouchFeedbackShapeFill')[0]
         like_button.click()
     } );
 
-    api.mapkey('D', 'Dislike YT short', function() {
+    api.mapkey('D', 'YT. toggle dislike short', function() {
         let dislike_view = document.getElementsByClassName('ytDislikeButtonViewModelHost')[0]
         let dislike_button = dislike_view.getElementsByClassName('ytSpecTouchFeedbackShapeFill')[0]
         dislike_button.click()
@@ -235,7 +235,7 @@ async function selectOptionByText(optionText) {
 }
 
 if (window.location.hostname === 'github.com') {
-    api.mapkey('<Ctrl-c>', 'Commit changes', function() {
+    api.mapkey('<Ctrl-c>', 'GH. commit changes', function() {
         let commit = [...document.querySelectorAll('span')].find(el => el.textContent.trim().startsWith('Commit changes...'));
         commit.click()
     } );
@@ -243,7 +243,7 @@ if (window.location.hostname === 'github.com') {
 
 
 if (window.location.hostname === 'app.dupdub.com') {
-    api.mapkey('w', 'pass through Welcome screen', function() {
+    api.mapkey('w', 'dupdub. pass through Welcome screen', function() {
         async function passWelcomeScreen() {
             // select 'describes you' option
             Array.from(document.querySelectorAll('p'))
@@ -285,7 +285,7 @@ if (window.location.hostname === 'app.dupdub.com') {
         passWelcomeScreen().catch(console.error);
     } );
 
-    api.mapkey('s', 'Select voiceover for DupDub TTS', function() {
+    api.mapkey('s', 'dupdub. select voiceover for TTS', function() {
         async function setTTSvoiceover() {
             // open voiceovers list
             Array.from(document.querySelectorAll('span'))
@@ -304,7 +304,7 @@ if (window.location.hostname === 'app.dupdub.com') {
         setTTSvoiceover().catch(console.error);
     } );
 
-    api.mapkey('e', 'Export DupDub current TTS as mp3', function() {
+    api.mapkey('e', 'dupdub. export current TTS as mp3', function() {
         async function exportMp3Sequence() {
           // click export dropdown button
           const exportMenuBtn = await waitForElement('.export-span.el-popover__reference');
@@ -328,7 +328,7 @@ if (window.location.hostname === 'app.dupdub.com') {
         exportMp3Sequence().catch(console.error);
     } );
 
-    api.mapkey('<Ctrl-g>', 'Generate voiceover in DupDub', function() {
+    api.mapkey('<Ctrl-g>', 'dupdub. generate voiceover', function() {
         async function generateVoiceover() {
           // click export dropdown button
           const generateBtn = document.querySelector('.play-icon');
@@ -337,7 +337,7 @@ if (window.location.hostname === 'app.dupdub.com') {
         generateVoiceover().catch(console.error);
     } );
 
-    api.mapkey('l', 'Logout from DupDub account', function() {
+    api.mapkey('l', 'dupdub. logout', function() {
         async function logout() {
             // need to hover over the profile icon which will create 'Logout' div in dom
             const userInfoWrapper = document.querySelector('.user-info-wrapper');
@@ -389,7 +389,7 @@ if (window.location.hostname === 'app.dupdub.com') {
 // api.mapkey('K', '#3Go one tab right', 'RUNTIME("nextTab")');
 
 // --- VK mapping
-api.mapkey('p', 'Repeat audio', function() {
+api.mapkey('p', 'VK. repeat audio', function() {
     if (window.location.hostname === "vk.com") {
         var repeat_icon = document.querySelector('[class*=vkuiIcon--repeat_]');
         if (repeat_icon) {
@@ -400,7 +400,7 @@ api.mapkey('p', 'Repeat audio', function() {
     }
 });
 
-api.mapkey('aa', 'Add audiotrack to list', function() {
+api.mapkey('aa', 'VK. sdd audiotrack to list', function() {
     if (window.location.hostname === "vk.com") {
         var add_icon = document.querySelector('.vkuiIcon--add_24');
         if (add_icon) {
