@@ -97,23 +97,8 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
         document.getElementById('efyt-cinema-mode').click()
     } );
     api.mapkey('s', 'Save YT video to playlist', function() {
-        // click 'More options' to open the buttons list
-        document.querySelector('ytd-menu-renderer.ytd-watch-metadata > yt-button-shape:nth-child(4) > button:nth-child(1)').click();    
-
-        // wait until menu items render, then look for the one with "Save" text
-        const interval = setInterval(() => {
-            const items = document.querySelectorAll('ytd-menu-service-item-renderer');
-            if (!items.length) return;
-    
-            for (const item of items) {
-                const text = item.innerText.trim().toLowerCase();
-                if (text.includes("save")) {
-                    item.click();
-                    clearInterval(interval);
-                    return;
-                }
-            }
-        }, 200);
+        let saveButton = document.querySelector('button[aria-label="Save to playlist"]');
+        saveButton.click();
     } );
 
     // wait until menu render
@@ -173,8 +158,8 @@ if (window.location.href.includes('youtube.com/shorts/')) {
           bubbles: true,
           cancelable: true,
           view: window
-        }));        
-        
+        }));
+
         let dots = document.querySelector('#button-shape > button:nth-child(1) > yt-touch-feedback-shape:nth-child(2) > div:nth-child(2)')
         dots.click()
 
