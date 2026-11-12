@@ -96,9 +96,30 @@ if (window.location.hostname === 'www.youtube.com' || window.location.hostname =
     api.mapkey('C', 'YT. toggle cinema-mode', function() {
         document.getElementById('efyt-cinema-mode').click()
     } );
-    api.mapkey('s', 'YT. save to playlist', function() {
+    api.mapkey('ss', 'YT. save to playlist', function() {
         let saveButton = document.querySelector('button[aria-label="Save to playlist"]');
         saveButton.click();
+    } );
+
+    // this function toggles playlists visibility by added videos
+    let hideUnchecked = false;
+    function togglePlaylistItems() {
+        hideUnchecked = !hideUnchecked;
+
+        document.querySelectorAll(
+            'yt-contextual-sheet-layout span.ytListItemViewModelImage svg path'
+        ).forEach(path => {
+            const checked = !path.getAttribute('d').includes('V4h14v16.233');
+            const item = path.closest('yt-list-item-view-model');
+
+            if (item) {
+                item.style.display = (!checked && hideUnchecked) ? 'none' : '';
+            }
+        });
+    }
+
+    api.mapkey('sa', 'YT. toggle playlist(s) containing this video(added)', function() {
+        togglePlaylistItems();
     } );
 
     // wait until menu render
